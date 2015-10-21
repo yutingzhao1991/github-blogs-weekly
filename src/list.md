@@ -1,5 +1,5 @@
-<% for (var i = 0; i < items.length; i ++) {
-  var item = items[i]
+<% for (var i = 0; i < blogs.length; i ++) {
+  var blog = blogs[i]
 %>
-- [<%= item.full_name %>(<%= item.open_issues_count %>)](<%= item.html_url %>) ✯<%= item.stargazers_count %>
+- [<%= blog.full_name %>(<%= blog.open_issues_count %>)](<%= blog.html_url %>) ✯<%= blog.stargazers_count %>
 <% } %>

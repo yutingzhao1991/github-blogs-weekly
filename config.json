@@ -1,1 +1,6 @@
-{}
+{
+  "minRequiredStarCount": 5,
+  "searchResponseMaxCount": 1000,
+  "ignoreRepos": [],
+  "extRepos": []
+}
