@@ -4,7 +4,8 @@
   "description": "List of blogs in github",
   "main": "index.js",
   "scripts": {
-    "build": "node ./src/build.js"
+    "build": "node ./src/build.js",
+    "harvest": "node ./src/harvest.js"
   },
   "author": "Tingzhao Yu",
   "license": "ISC",
