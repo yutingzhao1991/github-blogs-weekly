@@ -4,7 +4,10 @@ var request = require('request')
 
 var blogList = require('../blogs.json').blogs
 var newIssues = []
-var lastUpdateDate = new Date().setHours(0).setMinutes(0).setSeconds(0)
+var lastUpdateDate = new Date()
+lastUpdateDate.setHours(0)
+lastUpdateDate.setMinutes(0)
+lastUpdateDate.setSeconds(0)
 
 getIssuesFromRepo(0)
 
@@ -14,6 +17,8 @@ function getIssuesFromRepo(index) {
     generateNewBlogs()
     return
   }
+  var repo = blogList[index].full_name
+  console.log('Start get issues from repo: ' + repo + ' ...')
   request({
     url: 'https://api.github.com/repos/' + repo + '/issues',
     headers: {
@@ -23,7 +28,7 @@ function getIssuesFromRepo(index) {
     if (!err && response.statusCode == 200) {
       var data = JSON.parse(body)
       data.forEach(function(item) {
-        if (new Date(item.created_at).getTime() >= lastUpdateDate.getTime)) {
+        if (new Date(item.created_at).getTime() >= lastUpdateDate.getTime()) {
           // New one.
           newIssues.push(item)
         }
@@ -37,7 +42,7 @@ function getIssuesFromRepo(index) {
 
 function generateNewBlogs() {
   var template = '' + fs.readFileSync(__dirname + '/list.md')
-  var date = lastUpdateDate.getFullYear() + '-' + (lastUpdateDate.getMonth() + 1) + '-' + lastUpdateDate.getDate)()
+  var date = lastUpdateDate.getFullYear() + '-' + (lastUpdateDate.getMonth() + 1) + '-' + lastUpdateDate.getDate()
   var md = _.template(template)({
     items: newIssues,
     date: date

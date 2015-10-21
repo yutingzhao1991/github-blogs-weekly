@@ -13,6 +13,7 @@ searchBlogs(1)
 // Search blogs from github
 // Api: https://developer.github.com/v3/search/#search-repositories
 function searchBlogs(page) {
+  console.log('Start get blogs from page: ' + page + ' ...')
   request.get({
     url: 'https://api.github.com/search/repositories?q=blog+in:name+stars:>=' + config.minRequiredStarCount + '&order=desc&page=' + page,
     headers: {
@@ -23,8 +24,7 @@ function searchBlogs(page) {
       var data = JSON.parse(body)
       list = list.concat(data.items)
       if (data.incomplete_results == true
-        || data.items[0].name != 'blog'
-        || PER_PAGE_COUNT * page >= config.searchResponseMaxCount) {
+        || data.items[0].name != 'blog') {
         // End search.
         var blogs = generateBlogsFromList()
         writeBlogListToReadme(blogs)
