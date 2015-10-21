@@ -1,0 +1,15 @@
+{
+  "name": "github-blogs",
+  "version": "1.0.0",
+  "description": "List of blogs in github",
+  "main": "index.js",
+  "scripts": {
+    "build": "node ./src/build.js"
+  },
+  "author": "Tingzhao Yu",
+  "license": "ISC",
+  "dependencies": {
+    "request": "^2.65.0",
+    "underscore": "^1.8.3"
+  }
+}
