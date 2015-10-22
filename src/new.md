@@ -1,4 +1,4 @@
-New blogs update at <%= date %>
+New blogs created at <%= date %>
 ===
 
 <% for (var i = 0; i < items.length; i ++) {

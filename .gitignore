@@ -1,4 +1,4 @@
 node_modules/
 src/_list.md
-news/
+news/*.md
 npm-debug.log
