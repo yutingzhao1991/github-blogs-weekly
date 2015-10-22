@@ -1,8 +1,8 @@
-New blogs created at <%= date %>
+Articles at: <%= date %>
 ===
 
 <% for (var i = 0; i < items.length; i ++) {
   var item = items[i]
 %>
-- [<%= item.title %>](<%= item.html_url %>) (<%= item.user.login %>)
+- [<%= item.title %>](<%= item.html_url %>) （<%= item.user.login %>）
 <% } %>
