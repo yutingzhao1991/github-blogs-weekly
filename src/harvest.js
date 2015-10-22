@@ -1,6 +1,8 @@
 'use strict';
 
-// Not avaliable now.
+// 自动抓取新增的博客。
+// 抓取时间范围为上周创建。
+// Usage: node harvest.js githubusername githubpassword
 
 var request = require('request')
 var moment = require('moment')
