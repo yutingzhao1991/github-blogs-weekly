@@ -1,73 +1,110 @@
 GITHUB-BLOGS 收集GITHUB上的博客
 ===
 
-TODOLIST
+自动收集GITHUB上用ISSUES写的博客，watching本repo就可以获得定期推送。
+
+BLOGS LIST
 ---
 
-- 添加规则过滤错误的博客
-- 获取非首页的结果，采集更多的博客
-- 分类
-- 提醒文章更新
 
-LIST
----
+- [chase-seibert/blog(2)](https://github.com/chase-seibert/blog) ✯5
 
-- [kilimchoi/engineering-blogs(0)](https://github.com/kilimchoi/engineering-blogs) ✯6624
+- [ecomfe/blog(3)](https://github.com/ecomfe/blog) ✯10
 
-- [fouber/blog(10)](https://github.com/fouber/blog) ✯4722
+- [divarvel/blog(1)](https://github.com/divarvel/blog) ✯11
 
-- [rushter/data-science-blogs(2)](https://github.com/rushter/data-science-blogs) ✯2154
+- [auth0/blog(6)](https://github.com/auth0/blog) ✯11
 
-- [nswbmw/N-blog(39)](https://github.com/nswbmw/N-blog) ✯2076
+- [substack/blog(5)](https://github.com/substack/blog) ✯13
 
-- [nixzhu/dev-blog(1)](https://github.com/nixzhu/dev-blog) ✯1562
+- [GitbookIO/blog(1)](https://github.com/GitbookIO/blog) ✯16
 
-- [xufei/blog(19)](https://github.com/xufei/blog) ✯1496
+- [ngot/blog(2)](https://github.com/ngot/blog) ✯18
 
-- [markyun/My-blog(24)](https://github.com/markyun/My-blog) ✯1344
+- [nathanleclaire/blog(2)](https://github.com/nathanleclaire/blog) ✯18
 
-- [Fantomas42/django-blog-zinnia(9)](https://github.com/Fantomas42/django-blog-zinnia) ✯1066
+- [ashfurrow/blog(7)](https://github.com/ashfurrow/blog) ✯22
 
-- [jlongster/blog(2)](https://github.com/jlongster/blog) ✯1010
+- [doyoe/blog(1)](https://github.com/doyoe/blog) ✯23
 
-- [cssmagic/blog(47)](https://github.com/cssmagic/blog) ✯829
+- [duythien/blog(1)](https://github.com/duythien/blog) ✯23
 
-- [madskristensen/MiniBlog(19)](https://github.com/madskristensen/MiniBlog) ✯610
+- [zhaoda/blog(6)](https://github.com/zhaoda/blog) ✯24
 
-- [GetExpert/redux-blog-example(10)](https://github.com/GetExpert/redux-blog-example) ✯608
+- [wenzhixin/blog(6)](https://github.com/wenzhixin/blog) ✯24
 
-- [btford/angular-express-blog(13)](https://github.com/btford/angular-express-blog) ✯483
+- [studywolf/blog(1)](https://github.com/studywolf/blog) ✯26
 
-- [fc2blog/blog(0)](https://github.com/fc2blog/blog) ✯376
+- [dubuyuye/blog(1)](https://github.com/dubuyuye/blog) ✯26
 
-- [IronSummitMedia/startbootstrap-clean-blog-jekyll(19)](https://github.com/IronSummitMedia/startbootstrap-clean-blog-jekyll) ✯375
+- [LearnShare/blog(1)](https://github.com/LearnShare/blog) ✯26
 
-- [Differential/meteor-blog(11)](https://github.com/Differential/meteor-blog) ✯368
+- [philipwalton/blog(1)](https://github.com/philipwalton/blog) ✯28
 
-- [d-ronnqvist/blogpost-codesample-PullToRefresh(1)](https://github.com/d-ronnqvist/blogpost-codesample-PullToRefresh) ✯368
+- [steveklabnik/blog(1)](https://github.com/steveklabnik/blog) ✯31
 
-- [adonaac/blog(7)](https://github.com/adonaac/blog) ✯333
+- [mackenziechild/blog(1)](https://github.com/mackenziechild/blog) ✯32
 
-- [yccphp/laravel-5-blog(1)](https://github.com/yccphp/laravel-5-blog) ✯325
+- [jakubholynet/blog(1)](https://github.com/jakubholynet/blog) ✯33
 
-- [tildeio/bloggr-client(11)](https://github.com/tildeio/bloggr-client) ✯318
+- [pixelhandler/blog(1)](https://github.com/pixelhandler/blog) ✯35
 
-- [EnigmaCurry/blogofile(44)](https://github.com/EnigmaCurry/blogofile) ✯317
+- [duguying/blog(1)](https://github.com/duguying/blog) ✯37
 
-- [yisibl/blog(6)](https://github.com/yisibl/blog) ✯298
+- [ccjr/blog(1)](https://github.com/ccjr/blog) ✯40
+
+- [jxufeliujj/blog(1)](https://github.com/jxufeliujj/blog) ✯42
+
+- [bgolub/blog(1)](https://github.com/bgolub/blog) ✯44
+
+- [ruhoh/blog(11)](https://github.com/ruhoh/blog) ✯45
+
+- [web2hack/blog(1)](https://github.com/web2hack/blog) ✯46
+
+- [enml/blog(2)](https://github.com/enml/blog) ✯47
+
+- [tikonen/blog(1)](https://github.com/tikonen/blog) ✯47
+
+- [yeol/blog(2)](https://github.com/yeol/blog) ✯47
+
+- [classicemi/blog(12)](https://github.com/classicemi/blog) ✯49
+
+- [hugozhu/blog(1)](https://github.com/hugozhu/blog) ✯55
+
+- [nimojs/blog(14)](https://github.com/nimojs/blog) ✯72
+
+- [msurguy/blog(1)](https://github.com/msurguy/blog) ✯88
+
+- [chyingp/blog(29)](https://github.com/chyingp/blog) ✯91
+
+- [fool2fish/blog(12)](https://github.com/fool2fish/blog) ✯105
+
+- [lukego/blog(13)](https://github.com/lukego/blog) ✯115
+
+- [android-cn/blog(1)](https://github.com/android-cn/blog) ✯120
+
+- [dfguo/blog(1)](https://github.com/dfguo/blog) ✯123
+
+- [atian25/blog(9)](https://github.com/atian25/blog) ✯130
 
 - [wintercn/blog(7)](https://github.com/wintercn/blog) ✯289
 
-- [refinery/refinerycms-blog(23)](https://github.com/refinery/refinerycms-blog) ✯289
+- [yisibl/blog(6)](https://github.com/yisibl/blog) ✯298
 
-- [Arachnid/bloggart(26)](https://github.com/Arachnid/bloggart) ✯286
+- [adonaac/blog(7)](https://github.com/adonaac/blog) ✯333
 
-- [IronSummitMedia/startbootstrap-clean-blog(6)](https://github.com/IronSummitMedia/startbootstrap-clean-blog) ✯270
+- [cssmagic/blog(47)](https://github.com/cssmagic/blog) ✯830
 
-- [fuxiaohei/GoBlog(6)](https://github.com/fuxiaohei/GoBlog) ✯268
+- [jlongster/blog(2)](https://github.com/jlongster/blog) ✯1011
 
-- [kdelemme/blogjs(9)](https://github.com/kdelemme/blogjs) ✯267
+- [xufei/blog(19)](https://github.com/xufei/blog) ✯1498
 
-- [punchagan/org2blog(21)](https://github.com/punchagan/org2blog) ✯245
+- [fouber/blog(10)](https://github.com/fouber/blog) ✯4725
 
-- [middleman/middleman-blog(24)](https://github.com/middleman/middleman-blog) ✯223
+
+TODOLIST
+---
+
+- 支持过滤指定博客和添加指定博客
+- 分类
+- 提醒文章更新

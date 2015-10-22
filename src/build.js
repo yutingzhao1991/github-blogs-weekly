@@ -23,16 +23,19 @@ function searchBlogs(page) {
     if (!err && response.statusCode == 200) {
       var data = JSON.parse(body)
       list = list.concat(data.items)
-      if (data.incomplete_results == true
-        || data.items[0].name != 'blog') {
+      if (data.incomplete_results == true || page > 2) {
         // End search.
         var blogs = generateBlogsFromList()
         writeBlogListToReadme(blogs)
       } else {
-        searchBlogs(page + 1)
+        // For unauthenticated requests, the rate limit allows you to make up to 10 requests per minute.
+        // See: https://developer.github.com/v3/search/#rate-limit
+        setTimeout(function() {
+          searchBlogs(page + 1)
+        }, 7500)
       }
     } else {
-      console.error(err)
+      console.error(err, response)
     }
   })
 }
@@ -48,22 +51,29 @@ function generateBlogsFromList() {
       stargazers_count: item.stargazers_count
     }
   })
+  return blogs
 }
 
 function writeBlogListToReadme(blogs) {
+  blogs.sort(function(a, b) {
+    return b.stargazers_count - a.stargazers_count
+  })
   var template = '' + fs.readFileSync(__dirname + '/list.md')
   var mdHead = '' + fs.readFileSync(__dirname + '/../_README.md')
-  var md = mdHead + _.template(template)({
+  var md = mdHead.replace('{BLOGS_LIST}', _.template(template)({
     blogs: blogs
-  })
+  }))
   fs.writeFileSync(__dirname + '/../blogs.json', {
     blogs: blogs
   })
   fs.writeFileSync(__dirname + '/../README.md', md)
 }
 
-function filterBlogs() {
-  // TODO
+function removeIgnoreRepos() {
+  list = _.filter(list, function(item) {
+    return item.open_issues_count >= 1 && item.name == 'blog'
+  })
+  // TODO: remove ignore repos which defined in config.
 }
 
 function appendExtRepos() {

@@ -1,13 +1,13 @@
 'use strict';
 
+// Not avaliable now.
+
 var request = require('request')
+var moment = require('moment')
 
 var blogList = require('../blogs.json').blogs
 var newIssues = []
-var lastUpdateDate = new Date()
-lastUpdateDate.setHours(0)
-lastUpdateDate.setMinutes(0)
-lastUpdateDate.setSeconds(0)
+var yesterday = moment().add(-1, 'days').format('YYYY-MM-DD')
 
 getIssuesFromRepo(0)
 
@@ -20,19 +20,22 @@ function getIssuesFromRepo(index) {
   var repo = blogList[index].full_name
   console.log('Start get issues from repo: ' + repo + ' ...')
   request({
-    url: 'https://api.github.com/repos/' + repo + '/issues',
+    url: 'https://api.github.com/repos/' + repo + '/issues?sort=created&direction=desc',
     headers: {
       'User-Agent': 'request'
     }
   }, function (err, response, body) {
     if (!err && response.statusCode == 200) {
       var data = JSON.parse(body)
-      data.forEach(function(item) {
-        if (new Date(item.created_at).getTime() >= lastUpdateDate.getTime()) {
-          // New one.
+      for (var i = 0; i < data.length; i ++) {
+        if (moment(item.created_at).format('YYYY-MM-DD') == yesterday) {
+          // New one which post at yesterday.
           newIssues.push(item)
+        } else if (moment(item.created_at).format('YYYY-MM-DD') < yesterday) {
+          // Too old.
+          break
         }
-      })
+      }
       getIssuesFromRepo(index + 1)
     } else {
       console.error(err)
