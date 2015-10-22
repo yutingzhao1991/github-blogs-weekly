@@ -23,7 +23,11 @@ function searchBlogs(page) {
     if (!err && response.statusCode == 200) {
       var data = JSON.parse(body)
       list = list.concat(data.items)
-      if (data.incomplete_results == true || page > 2) {
+      if (data.incomplete_results == true
+        // 搜索默认按照匹配度排序，如果发现前后都不再是blog，则认为后续的结果都是无意义的。
+        || (data.items[0].name != 'blog' && data.items[data.items.length - 1].name != 'blog')
+        // 超过github的reponse数量限制
+        || list.length >= config.searchResponseMaxCount) {
         // End search.
         var blogs = generateBlogsFromList()
         writeBlogListToReadme(blogs)
@@ -32,7 +36,7 @@ function searchBlogs(page) {
         // See: https://developer.github.com/v3/search/#rate-limit
         setTimeout(function() {
           searchBlogs(page + 1)
-        }, 7500)
+        }, 12000)
       }
     } else {
       console.error(err, response)
@@ -55,6 +59,7 @@ function generateBlogsFromList() {
 }
 
 function writeBlogListToReadme(blogs) {
+  console.log('writing to readme ...')
   blogs.sort(function(a, b) {
     return b.stargazers_count - a.stargazers_count
   })
