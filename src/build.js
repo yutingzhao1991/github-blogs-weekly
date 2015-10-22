@@ -1,11 +1,21 @@
 'use strict';
 
 // Search repos which repo's name match 'blog' and write to blogs.json && README.md.
+// Usage: node build.js githubusername githubpassword
 
 var fs = require('fs')
 var _ = require('underscore')
 var request = require('request')
 var config = require('../config')
+
+if (process.argv.length < 4) {
+  console.log(process.argv)
+  console.error('Not find username and password, use with :" node build.js username password ".')
+  process.exit(1)
+}
+
+var username = process.argv[2]
+var password = process.argv[3]
 
 var list = []
 searchBlogs(1)
@@ -16,6 +26,10 @@ function searchBlogs(page) {
   console.log('Start get blogs from page: ' + page + ' ...')
   request.get({
     url: 'https://api.github.com/search/repositories?q=blog+in:name+stars:>=' + config.minRequiredStarCount + '&order=desc&page=' + page,
+    auth: {
+      user: username,
+      pass: password
+    },
     headers: {
       'User-Agent': 'request'
     }
@@ -24,8 +38,6 @@ function searchBlogs(page) {
       var data = JSON.parse(body)
       list = list.concat(data.items)
       if (data.incomplete_results == true
-        // 搜索默认按照匹配度排序，如果发现前后都不再是blog，则认为后续的结果都是无意义的。
-        || (data.items[0].name != 'blog' && data.items[data.items.length - 1].name != 'blog')
         // 超过github的reponse数量限制
         || list.length >= config.searchResponseMaxCount) {
         // End search.
