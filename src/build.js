@@ -68,9 +68,7 @@ function writeBlogListToReadme(blogs) {
   var md = mdHead.replace('{BLOGS_LIST}', _.template(template)({
     blogs: blogs
   }))
-  fs.writeFileSync(__dirname + '/../blogs.json', {
-    blogs: blogs
-  })
+  fs.writeFileSync(__dirname + '/../blogs.json', JSON.stringify(blogs))
   fs.writeFileSync(__dirname + '/../README.md', md)
 }
 

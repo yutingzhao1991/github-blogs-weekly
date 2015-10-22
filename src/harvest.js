@@ -5,7 +5,7 @@
 var request = require('request')
 var moment = require('moment')
 
-var blogList = require('../blogs.json').blogs
+var blogList = require('../blogs.json')
 var newIssues = []
 var yesterday = moment().add(-1, 'days').format('YYYY-MM-DD')
 
