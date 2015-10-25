@@ -1,4 +1,4 @@
-Articles at: <%= date %>
+文章更新: <%= date %>
 ===
 
 <% for (var i = 0; i < items.length; i ++) {

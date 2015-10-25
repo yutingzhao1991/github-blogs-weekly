@@ -1,6 +1,13 @@
 {
   "minRequiredStarCount": 5,
   "searchResponseMaxCount": 1000,
-  "ignoreRepos": [],
-  "extRepos": []
+  "ignoreRepos": [
+    "jlongster/blog",
+    "android-cn/blog",
+    "Polymer/blog"
+  ],
+  "extRepos": [
+    "Lucifier129/Lucifier129.github.io",
+    "lifesinger/lifesinger.github.io"
+  ]
 }

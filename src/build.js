@@ -20,8 +20,9 @@ var password = process.argv[3]
 var list = []
 searchBlogs(1)
 
-// Search blogs from github
-// Api: https://developer.github.com/v3/search/#search-repositories
+// Search blogs from github,
+// Api: https://developer.github.com/v3/search/#search-repositories,
+// 为了防止请求限制超过github上限，所有请求串行发出.
 function searchBlogs(page) {
   console.log('Start get blogs from page: ' + page + ' ...')
   request.get({
@@ -41,14 +42,13 @@ function searchBlogs(page) {
         // 超过github的reponse数量限制
         || list.length >= config.searchResponseMaxCount) {
         // End search.
-        var blogs = generateBlogsFromList()
-        writeBlogListToReadme(blogs)
+        generateBlogsFromList()
       } else {
         // For unauthenticated requests, the rate limit allows you to make up to 10 requests per minute.
         // See: https://developer.github.com/v3/search/#rate-limit
         setTimeout(function() {
           searchBlogs(page + 1)
-        }, 12000)
+        }, 5000)
       }
     } else {
       console.error(err, response)
@@ -57,17 +57,10 @@ function searchBlogs(page) {
 }
 
 function generateBlogsFromList() {
+  // 移除非blog的repo.
   removeIgnoreRepos()
-  appendExtRepos()
-  var blogs = list.map(function(item) {
-    return {
-      full_name: item.full_name,
-      open_issues_count: item.open_issues_count,
-      html_url: item.html_url,
-      stargazers_count: item.stargazers_count
-    }
-  })
-  return blogs
+  // 添加指定的blog的repo，从第0个开始递归添加.
+  appendExtRepos(0)
 }
 
 function writeBlogListToReadme(blogs) {
@@ -86,11 +79,48 @@ function writeBlogListToReadme(blogs) {
 
 function removeIgnoreRepos() {
   list = _.filter(list, function(item) {
-    return item.open_issues_count >= 1 && item.name == 'blog'
+    if (item.open_issues_count >= 1
+      && item.name == 'blog'
+      && config.ignoreRepos.indexOf(item.full_name) == -1) {
+      return true
+    } else {
+      return false
+    }
   })
-  // TODO: remove ignore repos which defined in config.
 }
 
-function appendExtRepos() {
-  // TODO
+function appendExtRepos(index) {
+  if (config.extRepos.length <= index) {
+    // 所有指定的repo都添加完毕到list中，最后写入结果到readme和blogs.json.
+    var blogs = list.map(function(item) {
+      return {
+        full_name: item.full_name,
+        open_issues_count: item.open_issues_count,
+        html_url: item.html_url,
+        stargazers_count: item.stargazers_count
+      }
+    })
+    writeBlogListToReadme(blogs)
+  } else {
+    var fullName = config.extRepos[index]
+    console.log('Get detail of ext repo: ' + fullName)
+    request.get({
+      url: 'https://api.github.com/repos/' + fullName,
+      auth: {
+        user: username,
+        pass: password
+      },
+      headers: {
+        'User-Agent': 'request'
+      }
+    }, function (err, response, body) {
+      if (!err && response.statusCode == 200) {
+        var data = JSON.parse(body)
+        list.push(data)
+        appendExtRepos(index + 1)
+      } else {
+        console.error(err, response)
+      }
+    })
+  }
 }
