@@ -58,7 +58,7 @@ function getIssuesFromRepo(index) {
             console.log('get a article: ' + item.title)
             newIssues.push(item)
           }
-        } else if (createdDate < endDate) {
+        } else if (createdDate < startDate) {
           // Too old.
           break
         }
@@ -82,14 +82,13 @@ function generateNewBlogs() {
     date: date
   })
   fs.writeFileSync(__dirname + '/../news/' + date + '.md', md)
-
   // Publish new blogs as a issue.
   console.log('Publish new article to your issue.')
   request({
     url: 'https://api.github.com/repos/' + username + '/github-blogs/issues',
     method: 'POST',
     body: JSON.stringify({
-      title: 'Articles at: ' + date,
+      title: '文章更新 [ ' + date + ' ]',
       body: md,
       labels: ['Articles']
     }),
