@@ -58,7 +58,7 @@ function getIssuesFromRepo(index) {
             console.log('get a article: ' + item.title)
             newIssues.push(item)
           }
-        } else if (createdDate < endDate) {
+        } else if (createdDate < startDate) {
           // Too old.
           break
         }
