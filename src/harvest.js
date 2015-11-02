@@ -1,8 +1,8 @@
 'use strict';
 
-// 自动抓取新增的博客。
+// 自动抓取新增的博客，并通过issue的形式发布。
 // 抓取时间默认范围为上周创建。
-// Usage: node harvest.js githubusername githubpassword [start_date] [end_date]
+// Usage: node harvest.js githubusername githubpassword [start_date] [end_date].
 
 var request = require('request')
 var moment = require('moment')
@@ -82,14 +82,13 @@ function generateNewBlogs() {
     date: date
   })
   fs.writeFileSync(__dirname + '/../news/' + date + '.md', md)
-
   // Publish new blogs as a issue.
   console.log('Publish new article to your issue.')
   request({
     url: 'https://api.github.com/repos/' + username + '/github-blogs/issues',
     method: 'POST',
     body: JSON.stringify({
-      title: 'Articles at: ' + date,
+      title: '文章更新 [ ' + date + ' ]',
       body: md,
       labels: ['Articles']
     }),
