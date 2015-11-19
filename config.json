@@ -9,6 +9,10 @@
   "extRepos": [
     "Lucifier129/Lucifier129.github.io",
     "lifesinger/lifesinger.github.io",
-    "hax/hax.github.com"
+    "hax/hax.github.com",
+    "amfe/article"
+  ],
+  "publicRepos": [
+    "amfe/article"
   ]
 }
